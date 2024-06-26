@@ -1,4 +1,3 @@
-using BehaviorDesigner.Runtime.Tasks;
 using BepInEx.Configuration;
 
 namespace PluginName.Settings;
