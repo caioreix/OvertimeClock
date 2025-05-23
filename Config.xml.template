@@ -1,5 +1,7 @@
 ﻿<Project>
   <PropertyGroup>
-    <BuildDestinationFolder>C:\GamePath\BepInEx\plugins\</BuildDestinationFolder>
+    <BuildClientDestinationFolder>C:\BepInExPath\plugins\</BuildClientDestinationFolder>
+    <BuildServerDestinationFolder>C:\BepInExServerPath\plugins\</BuildServerDestinationFolder>
+    <InteropDllsFolder>C:\BepInExPath\interop</InteropDllsFolder>
   </PropertyGroup>
 </Project>

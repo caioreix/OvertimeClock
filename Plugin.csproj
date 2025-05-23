@@ -5,21 +5,25 @@
     <ProjectName>PluginName</ProjectName>
     <AssemblyName>PluginName</AssemblyName>
     <RootNamespace>PluginName</RootNamespace>
+    <SolutionName>PluginName</SolutionName>
     <Description>My first plugin</Description>
-    <Version>1.0.0</Version>
+    <Version>0.0.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
+    <NoWarn>IDE0130</NoWarn>
 
-    <RestoreAdditionalProjectSources>
-      https://api.nuget.org/v3/index.json;
-      https://nuget.bepinex.dev/v3/index.json
-    </RestoreAdditionalProjectSources>
+    <BepInExVersion>6.0.0-be.733</BepInExVersion>
   </PropertyGroup>
 
+  <Target Name="Copy pack to dist" AfterTargets="Pack" >
+    <Copy SourceFiles="$(OutDir)..\$(PackageId).$(Version).nupkg" DestinationFolder=".\dist" />
+  </Target>
 
-  <Import Project="Config.xml" Condition=" '$(Configuration)' == 'Test'" />
+  <Import Project="Config.xml" Condition=" '$(Configuration)' == 'Test' and Exists('Config.xml')" />
   <Target Name="CopyDLLs" AfterTargets="AfterBuild" Condition=" '$(Configuration)' == 'Test'">
-    <Copy SourceFiles="$(TargetDir)$(AssemblyName).dll" DestinationFolder="$(BuildDestinationFolder)/Test" />
+    <Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="$(BuildClientDestinationFolder)" Condition="'$(BuildClientDestinationFolder)' != ''" />
+    <Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="$(BuildServerDestinationFolder)" Condition="'$(BuildServerDestinationFolder)' != ''" />
+    <Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="./dist" />
   </Target>
 
   <ItemGroup>
@@ -27,6 +31,6 @@
     <PackageReference Include="BepInEx.Core" Version="6.0.0-be.*" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
 
-    <!-- <Reference Include=".\dlls\*.dll" /> -->
+    <Reference Include="$(InteropDllsFolder)" Condition="'$(InteropDllsFolder)' != ''" />
   </ItemGroup>
 </Project>
