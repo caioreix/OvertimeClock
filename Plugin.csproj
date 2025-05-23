@@ -2,15 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <ProjectName>OvertimeCountdown</ProjectName>
-    <AssemblyName>OvertimeCountdown</AssemblyName>
-    <RootNamespace>OvertimeCountdown</RootNamespace>
-    <SolutionName>OvertimeCountdown</SolutionName>
+    <ProjectName>OvertimeClock</ProjectName>
+    <AssemblyName>OvertimeClock</AssemblyName>
+    <RootNamespace>OvertimeClock</RootNamespace>
+    <SolutionName>OvertimeClock</SolutionName>
     <Description>My first plugin</Description>
     <Version>0.0.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
-    <NoWarn>IDE0130</NoWarn>
+    <NoWarn>IDE0130;CS0435;MSB3246</NoWarn>
 
     <BepInExVersion>6.0.0-be.733</BepInExVersion>
   </PropertyGroup>
@@ -19,7 +19,7 @@
     <Copy SourceFiles="$(OutDir)..\$(PackageId).$(Version).nupkg" DestinationFolder=".\dist" />
   </Target>
 
-  <Import Project="Config.xml" Condition=" '$(Configuration)' == 'Test' and Exists('Config.xml')" />
+  <Import Project="Config.xml" Condition="Exists('Config.xml')" />
   <Target Name="CopyDLLs" AfterTargets="AfterBuild" Condition=" '$(Configuration)' == 'Test'">
     <Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="$(BuildClientDestinationFolder)" Condition="'$(BuildClientDestinationFolder)' != ''" />
     <Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="$(BuildServerDestinationFolder)" Condition="'$(BuildServerDestinationFolder)' != ''" />
@@ -27,10 +27,17 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
-    <PackageReference Include="BepInEx.Core" Version="6.0.0-be.*" IncludeAssets="compile" />
+    <InteropDllFiles Include="$(InteropDllsFolder)\**\*.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="$(BepInExVersion)" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.Core" Version="$(BepInExVersion)" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
 
-    <Reference Include="$(InteropDllsFolder)" Condition="'$(InteropDllsFolder)' != ''" />
+    <Reference Include="@(InteropDllFiles)">
+      <HintPath>%(InteropDllFiles.Identity)</HintPath>
+      <Private>true</Private>
+    </Reference>
   </ItemGroup>
 </Project>

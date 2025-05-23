@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to OvertimeCountdown will be documented in this file.
+All notable changes to OvertimeClock will be documented in this file.
 
 ## `0.0.1`
 ### Added
