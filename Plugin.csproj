@@ -27,7 +27,7 @@
   </Target>
 
   <ItemGroup>
-    <InteropDllFiles Include="$(InteropDllsFolder)\**\*.dll" />
+    <InteropDllFiles Include="$(InteropDllsFolder)\**\*.dll" Condition="'$(InteropDllsFolder)' != ''" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,7 +35,7 @@
     <PackageReference Include="BepInEx.Core" Version="$(BepInExVersion)" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
 
-    <Reference Include="@(InteropDllFiles)">
+    <Reference Include="@(InteropDllFiles)" Condition="'$(InteropDllsFolder)' != ''" >
       <HintPath>%(InteropDllFiles.Identity)</HintPath>
       <Private>true</Private>
     </Reference>
