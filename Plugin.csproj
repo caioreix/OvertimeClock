@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <ProjectName>PluginName</ProjectName>
-    <AssemblyName>PluginName</AssemblyName>
-    <RootNamespace>PluginName</RootNamespace>
-    <SolutionName>PluginName</SolutionName>
+    <ProjectName>OvertimeCountdown</ProjectName>
+    <AssemblyName>OvertimeCountdown</AssemblyName>
+    <RootNamespace>OvertimeCountdown</RootNamespace>
+    <SolutionName>OvertimeCountdown</SolutionName>
     <Description>My first plugin</Description>
     <Version>0.0.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

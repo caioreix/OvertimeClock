@@ -14,7 +14,7 @@
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "PluginName",
+  "sourceName": "OvertimeCountdown",
   "preferNameDirectory": true,
   "sources": [
     {

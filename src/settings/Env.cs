@@ -1,6 +1,6 @@
 using Utils.Settings;
 
-namespace PluginName.Settings;
+namespace OvertimeCountdown.Settings;
 
 public static class ENV {
     // Mission_General
