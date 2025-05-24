@@ -13,7 +13,7 @@ on:
 jobs:
   release_on_thunderstore:
     if: |
-      github.repository != 'caioreix/bepinex-template'
+      github.repository != 'caioreix/bepinex-template' ||
       github.event_name == 'workflow_dispatch' ||
       github.event.action == 'published' ||
       (github.event.action == 'edited' && github.event.release.prerelease == false)
