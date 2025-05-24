@@ -19,11 +19,14 @@
     <Copy SourceFiles="$(OutDir)..\$(PackageId).$(Version).nupkg" DestinationFolder=".\dist" />
   </Target>
 
+  <Target Name="Copy to Dist" AfterTargets="AfterBuild">
+    <Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="./dist" />
+  </Target>
+
   <Import Project="Config.xml" Condition="Exists('Config.xml')" />
   <Target Name="CopyDLLs" AfterTargets="AfterBuild" Condition=" '$(Configuration)' == 'Test'">
     <Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="$(BuildClientDestinationFolder)" Condition="'$(BuildClientDestinationFolder)' != ''" />
     <Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="$(BuildServerDestinationFolder)" Condition="'$(BuildServerDestinationFolder)' != ''" />
-    <Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="./dist" />
   </Target>
 
   <ItemGroup>
