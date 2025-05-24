@@ -2,6 +2,10 @@
 
 All notable changes to OvertimeClock will be documented in this file.
 
+## `1.0.2`
+### Changed
+- Updated BepInEx dependence version.
+
 ## `1.0.1`
 ### Changed
 - Updated project and package descriptions for clarity and consistency across `Plugin.csproj`, `README.md`, and `thunderstore.toml`.
