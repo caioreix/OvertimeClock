@@ -6,7 +6,7 @@
     <AssemblyName>OvertimeClock</AssemblyName>
     <RootNamespace>OvertimeClock</RootNamespace>
     <SolutionName>OvertimeClock</SolutionName>
-    <Description>My first plugin</Description>
+    <Description>OvertimeClock is a mod for Deep Rock Galactic: Survivor that enhances extraction time control and offers advanced configuration options for players.</Description>
     <Version>0.0.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>

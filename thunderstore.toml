@@ -5,7 +5,7 @@ schemaVersion = "0.0.1"
 namespace = "Caioreix"
 name = "OvertimeClock"
 versionNumber = "0.0.0"
-description = "My first plugin."
+description = "OvertimeClock is a mod for Deep Rock Galactic: Survivor that enhances extraction time control and offers advanced configuration options for players."
 websiteUrl = "https://github.com/caioreix/OvertimeClock"
 containsNsfwContent = false
 
