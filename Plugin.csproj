@@ -15,7 +15,7 @@
     <BepInExVersion>6.0.0-be.733</BepInExVersion>
   </PropertyGroup>
 
-  <Target Name="Copy pack to dist" AfterTargets="Pack" >
+  <Target Name="Copy pack to dist" AfterTargets="Pack">
     <Copy SourceFiles="$(OutDir)..\$(PackageId).$(Version).nupkg" DestinationFolder=".\dist" />
   </Target>
 
@@ -34,8 +34,9 @@
     <PackageReference Include="BepInEx.Unity.IL2CPP" Version="$(BepInExVersion)" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.Core" Version="$(BepInExVersion)" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+    <PackageReference Include="DeepRockGalacticSurvival.Interop" Version="0.4.87-B" />
 
-    <Reference Include="@(InteropDllFiles)" Condition="'$(InteropDllsFolder)' != ''" >
+    <Reference Include="@(InteropDllFiles)" Condition="'$(InteropDllsFolder)' != ''">
       <HintPath>%(InteropDllFiles.Identity)</HintPath>
       <Private>true</Private>
     </Reference>
